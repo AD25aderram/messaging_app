@@ -1,0 +1,131 @@
+/* =========================================================
+   HALO TERMINAL — LOGIN PAGE
+   Depends on: terminal-base.css
+   ========================================================= */
+
+/* ── Page shell ───────────────────────────────────────── */
+.login-page {
+  min-height: 100vh;
+  background: var(--term-bg);
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  padding: 24px 16px;
+  position: relative;
+}
+
+/* ── Wrapper ──────────────────────────────────────────── */
+.login-wrapper {
+  width: 100%;
+  max-width: 480px;
+}
+
+/* ── Box inherits .term-box ───────────────────────────── */
+
+/* ── Body area ────────────────────────────────────────── */
+.login-body {
+  padding: 28px 24px 20px;
+}
+
+/* ── Boot log block ───────────────────────────────────── */
+.login-boot {
+  margin-bottom: 24px;
+  font-size: 11px;
+  line-height: 1.8;
+}
+
+.login-boot__line {
+  color: var(--term-green-mute);
+}
+
+.login-boot__line--bright {
+  color: var(--term-green);
+}
+
+.login-boot__line--rule {
+  color: var(--term-green);
+}
+
+/* ── Form ─────────────────────────────────────────────── */
+.login-form {
+  display: flex;
+  flex-direction: column;
+  gap: 16px;
+}
+
+/* ── Password row extras ──────────────────────────────── */
+.login-field--password {
+  position: relative;
+}
+
+.login-field__input-wrap {
+  flex: 1;
+  display: flex;
+  align-items: center;
+  border-bottom: 1px solid var(--term-border);
+  transition: border-color 0.15s;
+}
+
+.login-field__input-wrap:focus-within {
+  border-bottom-color: var(--term-green-hi);
+}
+
+.login-field__input-wrap .term-field__input {
+  border-bottom: none;          /* border lives on the wrapper */
+  flex: 1;
+}
+
+.login-field__toggle {
+  background: none;
+  border: none;
+  color: var(--term-green-mute);
+  font-family: var(--term-font);
+  font-size: 10px;
+  cursor: pointer;
+  padding-bottom: 2px;
+  letter-spacing: 0.05em;
+  transition: color 0.15s;
+  flex-shrink: 0;
+}
+
+.login-field__toggle:hover {
+  color: var(--term-green);
+}
+
+/* ── Forgot link ──────────────────────────────────────── */
+.login-forgot {
+  text-align: right;
+  margin-top: -8px;
+}
+
+.login-forgot__btn {
+  background: none;
+  border: none;
+  font-family: var(--term-font);
+  font-size: 10px;
+  color: var(--term-green-mute);
+  cursor: pointer;
+  letter-spacing: 0.05em;
+  transition: color 0.15s;
+}
+
+.login-forgot__btn:hover {
+  color: var(--term-green-hi);
+}
+
+/* ── Actions ──────────────────────────────────────────── */
+.login-actions {
+  display: flex;
+  flex-direction: column;
+  gap: 8px;
+  margin-top: 4px;
+}
+
+/* ── Footer note ──────────────────────────────────────── */
+.login-footer {
+  text-align: center;
+  color: var(--term-green-mute);
+  font-size: 10px;
+  letter-spacing: 0.1em;
+  margin-top: 10px;
+}

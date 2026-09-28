@@ -1,0 +1,239 @@
+/* =========================================================
+   HALO TERMINAL — BASE STYLES
+   Import this before any page-level CSS file.
+   ========================================================= */
+
+@import url('https://fonts.googleapis.com/css2?family=JetBrains+Mono:wght@400;500;600;700&display=swap');
+
+/* ── Custom properties ─────────────────────────────────── */
+:root {
+  --term-bg:          #050505;
+  --term-bg-panel:    #030303;
+  --term-bg-card:     #080808;
+  --term-bg-input:    #050505;
+
+  --term-green:       #00d96c;   /* primary text / foreground  */
+  --term-green-hi:    #00ff88;   /* highlights, active, borders */
+  --term-green-dim:   #00a050;   /* secondary text             */
+  --term-green-mute:  #1d6638;   /* muted / placeholder        */
+
+  --term-amber:       #ffaa00;   /* warnings, unread badges    */
+  --term-red:         #ff3333;   /* errors, destructive        */
+  --term-blue:        #00aaff;   /* info                       */
+
+  --term-border:      #0e3320;   /* panel borders              */
+  --term-border-hi:   #00ff88;   /* focused / active borders   */
+
+  --term-statusbar-bg: #00d96c;
+  --term-statusbar-fg: #000000;
+
+  --term-font:        'JetBrains Mono', 'Courier New', monospace;
+  --term-font-size:   13px;
+  --term-line-height: 1.6;
+}
+
+/* ── Global reset ─────────────────────────────────────── */
+*,
+*::before,
+*::after {
+  box-sizing: border-box;
+  margin: 0;
+  padding: 0;
+}
+
+html, body, #root {
+  height: 100%;
+  background: var(--term-bg);
+  color: var(--term-green);
+  font-family: var(--term-font);
+  font-size: var(--term-font-size);
+  line-height: var(--term-line-height);
+  -webkit-font-smoothing: antialiased;
+}
+
+/* ── Hide scrollbars ──────────────────────────────────── */
+* {
+  scrollbar-width: none;
+}
+*::-webkit-scrollbar {
+  display: none;
+}
+
+/* ── Selection ───────────────────────────────────────── */
+::selection {
+  background: var(--term-green-hi);
+  color: #000;
+}
+
+/* ── Blinking cursor block ────────────────────────────── */
+@keyframes term-blink {
+  0%, 100% { opacity: 1; }
+  50%       { opacity: 0; }
+}
+
+.term-cursor {
+  display: inline-block;
+  width: 0.5rem;
+  height: 1em;
+  background: var(--term-green-hi);
+  vertical-align: middle;
+  margin-left: 2px;
+  animation: term-blink 1s step-end infinite;
+}
+
+/* ── CRT scanlines overlay ────────────────────────────── */
+.term-scanlines {
+  pointer-events: none;
+  position: fixed;
+  inset: 0;
+  z-index: 9999;
+  background: repeating-linear-gradient(
+    0deg,
+    transparent,
+    transparent 2px,
+    rgba(0, 0, 0, 0.07) 2px,
+    rgba(0, 0, 0, 0.07) 4px
+  );
+}
+
+/* ── Status bar (reusable) ────────────────────────────── */
+.term-statusbar {
+  display: flex;
+  align-items: center;
+  justify-content: space-between;
+  background: var(--term-statusbar-bg);
+  color: var(--term-statusbar-fg);
+  font-size: 10px;
+  font-weight: 700;
+  letter-spacing: 0.08em;
+  padding: 3px 12px;
+}
+
+/* ── Shared box (used on auth pages) ─────────────────── */
+.term-box {
+  border: 1px solid var(--term-border);
+  background: var(--term-bg-card);
+}
+
+.term-box__titlebar {
+  display: flex;
+  align-items: center;
+  justify-content: space-between;
+  border-bottom: 1px solid var(--term-border);
+  background: var(--term-bg-panel);
+  padding: 6px 16px;
+}
+
+.term-box__title {
+  color: var(--term-green-hi);
+  font-size: 11px;
+  font-weight: 700;
+  letter-spacing: 0.15em;
+}
+
+.term-box__pid {
+  color: var(--term-green-mute);
+  font-size: 11px;
+}
+
+/* ── Shared form row ──────────────────────────────────── */
+.term-field {
+  display: flex;
+  align-items: center;
+  gap: 10px;
+}
+
+.term-field__label {
+  color: var(--term-green-mute);
+  font-size: 11px;
+  letter-spacing: 0.05em;
+  flex-shrink: 0;
+  width: 88px;
+}
+
+.term-field__input {
+  flex: 1;
+  background: transparent;
+  border: none;
+  border-bottom: 1px solid var(--term-border);
+  color: var(--term-green);
+  font-family: var(--term-font);
+  font-size: 12px;
+  padding-bottom: 2px;
+  outline: none;
+  caret-color: var(--term-green-hi);
+  transition: border-color 0.15s;
+}
+
+.term-field__input::placeholder {
+  color: var(--term-green-mute);
+}
+
+.term-field__input:focus {
+  border-bottom-color: var(--term-green-hi);
+}
+
+/* ── Shared buttons ───────────────────────────────────── */
+.term-btn {
+  width: 100%;
+  font-family: var(--term-font);
+  font-size: 11px;
+  font-weight: 700;
+  letter-spacing: 0.15em;
+  padding: 8px 16px;
+  cursor: pointer;
+  transition: background 0.15s, color 0.15s, border-color 0.15s;
+  border-radius: 0;
+  outline: none;
+}
+
+.term-btn--primary {
+  border: 1px solid var(--term-green-hi);
+  background: transparent;
+  color: var(--term-green-hi);
+}
+
+.term-btn--primary:hover:not(:disabled) {
+  background: var(--term-green-hi);
+  color: #000;
+}
+
+.term-btn--primary:disabled {
+  opacity: 0.5;
+  cursor: not-allowed;
+}
+
+.term-btn--secondary {
+  border: 1px solid var(--term-border);
+  background: transparent;
+  color: var(--term-green-mute);
+}
+
+.term-btn--secondary:hover {
+  border-color: var(--term-green);
+  color: var(--term-green);
+}
+
+/* ── Spinner ──────────────────────────────────────────── */
+@keyframes term-spin {
+  to { transform: rotate(360deg); }
+}
+
+.term-spinner {
+  display: inline-flex;
+  align-items: center;
+  justify-content: center;
+  gap: 8px;
+}
+
+.term-spinner__dot {
+  animation: term-blink 0.8s step-end infinite;
+  letter-spacing: 2px;
+}
+
+/* ── Error line ───────────────────────────────────────── */
+.term-error {
+  color: var(--term-red);
+  font-size: 11px;
+  padding-left: 98px;
+}

@@ -1,0 +1,142 @@
+/* =========================================================
+   HALO TERMINAL — REGISTER PAGE
+   Depends on: terminal-base.css
+   ========================================================= */
+
+/* ── Page shell ───────────────────────────────────────── */
+.register-page {
+  min-height: 100vh;
+  background: var(--term-bg);
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  padding: 24px 16px;
+  position: relative;
+}
+
+/* ── Wrapper ──────────────────────────────────────────── */
+.register-wrapper {
+  width: 100%;
+  max-width: 480px;
+}
+
+/* ── Body area ────────────────────────────────────────── */
+.register-body {
+  padding: 28px 24px 20px;
+}
+
+/* ── Intro block ──────────────────────────────────────── */
+.register-intro {
+  margin-bottom: 24px;
+  font-size: 11px;
+  line-height: 1.8;
+}
+
+.register-intro__title {
+  color: var(--term-green);
+}
+
+.register-intro__sub {
+  color: var(--term-green-mute);
+}
+
+.register-intro__rule {
+  color: var(--term-green);
+}
+
+/* ── Form ─────────────────────────────────────────────── */
+.register-form {
+  display: flex;
+  flex-direction: column;
+  gap: 14px;
+}
+
+/* ── Password wrapper (show/hide inside field) ────────── */
+.register-field__input-wrap {
+  flex: 1;
+  display: flex;
+  align-items: center;
+  border-bottom: 1px solid var(--term-border);
+  transition: border-color 0.15s;
+}
+
+.register-field__input-wrap:focus-within {
+  border-bottom-color: var(--term-green-hi);
+}
+
+.register-field__input-wrap .term-field__input {
+  border-bottom: none;
+}
+
+.register-field__toggle {
+  background: none;
+  border: none;
+  color: var(--term-green-mute);
+  font-family: var(--term-font);
+  font-size: 10px;
+  cursor: pointer;
+  padding-bottom: 2px;
+  letter-spacing: 0.05em;
+  transition: color 0.15s;
+  flex-shrink: 0;
+}
+
+.register-field__toggle:hover {
+  color: var(--term-green);
+}
+
+/* ── Strength meter ───────────────────────────────────── */
+.register-strength {
+  display: flex;
+  align-items: center;
+  gap: 8px;
+  padding-left: 98px;
+  font-size: 11px;
+  margin-top: -4px;
+}
+
+.register-strength__label {
+  color: var(--term-green-mute);
+}
+
+.register-strength__value {
+  font-weight: 700;
+}
+
+.register-strength__value--weak   { color: var(--term-red);   }
+.register-strength__value--fair   { color: var(--term-amber); }
+.register-strength__value--strong { color: var(--term-green-hi); }
+
+/* ── Actions ──────────────────────────────────────────── */
+.register-actions {
+  display: flex;
+  flex-direction: column;
+  gap: 8px;
+  margin-top: 6px;
+}
+
+/* ── Footer note ──────────────────────────────────────── */
+.register-footer {
+  text-align: center;
+  color: var(--term-green-mute);
+  font-size: 10px;
+  letter-spacing: 0.08em;
+  margin-top: 10px;
+  line-height: 1.7;
+}
+
+.register-footer__link {
+  background: none;
+  border: none;
+  font-family: var(--term-font);
+  font-size: 10px;
+  color: var(--term-green);
+  cursor: pointer;
+  text-decoration: underline;
+  text-underline-offset: 2px;
+  transition: color 0.15s;
+}
+
+.register-footer__link:hover {
+  color: var(--term-green-hi);
+}
